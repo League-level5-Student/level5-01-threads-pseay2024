@@ -4,7 +4,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class ThreadPool {
 	Thread[] threads;
-	ConcurrentLinkedQueue<Task> taskQueue = new ConcurrentLinkedQueue<Task>();
+	ConcurrentLinkedQueue<Task> taskQueue;
 	public ThreadPool(int totalThreads)
 	{
 		threads = new Thread[totalThreads];
@@ -17,6 +17,10 @@ public class ThreadPool {
 	public void addTask(Task t)
 	{
 		taskQueue.add(t);
+		for (int i = 0; i < threads.length; i++)
+		{
+			threads[i] = new Thread(new Worker(taskQueue));
+		}
 	}
 	public void start()
 	{
