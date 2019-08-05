@@ -21,7 +21,7 @@ public class ThreadPoolTest {
 
 	@Test
 	public void test() {
-		int total = 400;
+		int total = 536870912;
 		
 		ThreadPool tp = new ThreadPool(4);
 		char[] chars = new char[total];
@@ -50,6 +50,6 @@ public class ThreadPoolTest {
 		
 		for(char c : chars){
 			assertTrue(Character.isUpperCase(c));
-		}	
+		}
 	}
 }
